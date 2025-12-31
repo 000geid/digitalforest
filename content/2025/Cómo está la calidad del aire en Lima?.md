@@ -1,3 +1,7 @@
+---
+date: 2025-09-04
+---
+
 ## ¿Qué tan limpio es el aire en la capital?
 
   
