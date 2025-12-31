@@ -78,7 +78,6 @@ Independientemente de la herramienta que elijas, el flujo a seguir comenzó a es
 Una vez terminados los tres pasos, debugueábamos: ¿funciona como queríamos? ¿rompimos alguna funcionalidad antigua? Este ciclo te obliga a tener tests robustos para validar que nada quede roto.
 
 ### El game-changer: Plan Mode de Cursor
-
 Para mí, el momento en que los agentes de programación pudieron adjudicarse una autonomía respetable fue con el feature de **Plan Mode de Cursor**, introducido en la versión 2.0. Este modo genera un plan de acción editable, al que le puedes dar al botón de _Build_ una vez satisfecho. Esto permitió:
 
 - **Previsibilidad:** Obtener resultados consistentes y modificables antes de aplicar cambios automáticos.
