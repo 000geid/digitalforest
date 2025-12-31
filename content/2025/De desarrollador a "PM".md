@@ -37,7 +37,10 @@ Hacia la segunda mitad del año, todas las empresas fueron desarrollando su prop
 
 ### 1. Los forks de VS Code
 
-Estas herramientas avanzadas construyeron sobre la base de Visual Studio Code para proporcionar ambientes agénticos completos, integrando soporte profundo para interacciones contextualizadas y multi-modelo.
+Estas herramientas avanzadas construyeron sobre la base de Visual Studio Code para proporcionar ambientes agénticos completos, integrando soporte profundo para interacciones contextualizadas y multi-modelo. Algunos ejemplos de estas:
+- Cursor
+- Windsurf
+- Trae
 
 ### 2. Los CLIs
 
@@ -52,7 +55,10 @@ Algunas propuestas decían que los agentes debían vivir en la terminal, lo que 
 
 ### 3. Extensiones de VS Code
 
-También surgieron extensiones que no redefinían todo el IDE, pero que añadían capacidades de agentes dentro del flujo tradicional de trabajo en VS Code.
+También surgieron extensiones que no redefinían todo el IDE, pero que añadían capacidades de agentes dentro del flujo tradicional de trabajo en VS Code. Algunas de ellas:
+- RooCode
+- Cline
+- Kilo Code
 
 Y, por supuesto, en la fiebre del oro de la inteligencia artificial, **[OpenRouter](https://openrouter.ai/)** ofrece un API unificado para acceder a múltiples modelos de lenguaje desde una sola interfaz, simplificando la integración de herramientas y agentes con distintos proveedores sin tener que reconfigurar cada vez.
 
@@ -73,7 +79,7 @@ Una vez terminados los tres pasos, debugueábamos: ¿funciona como queríamos? �
 
 ### El game-changer: Plan Mode de Cursor
 
-Para mí, el momento en que los agentes de programación pudieron adjudicarse una autonomía respetable fue con el feature de **Plan Mode de Cursor**, introducido en la versión 2.0. Este modo genera un plan de acción editable que puedes _Build_ una vez satisfecho, lo que permitió:
+Para mí, el momento en que los agentes de programación pudieron adjudicarse una autonomía respetable fue con el feature de **Plan Mode de Cursor**, introducido en la versión 2.0. Este modo genera un plan de acción editable, al que le puedes dar al botón de _Build_ una vez satisfecho. Esto permitió:
 
 - **Previsibilidad:** Obtener resultados consistentes y modificables antes de aplicar cambios automáticos.
     
