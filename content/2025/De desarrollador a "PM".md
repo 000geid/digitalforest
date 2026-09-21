@@ -1,5 +1,5 @@
 ---
-date: 2025-10-14
+date: 2025-12-31
 ---
 
 # El camino de los agentes
