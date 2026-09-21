@@ -1,0 +1,16 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "digitalforest",
+  "compatibility_date": "2026-09-02",
+  "assets": {
+    "directory": "./public",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page",
+  },
+  "routes": [
+    {
+      "pattern": "bosquedigital.ogeid.xyz",
+      "custom_domain": true,
+    },
+  ],
+}
