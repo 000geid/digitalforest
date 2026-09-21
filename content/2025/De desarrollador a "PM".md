@@ -1,3 +1,7 @@
+---
+date: 2025-10-14
+---
+
 # El camino de los agentes
 
 Te voy a contar el vertiginoso cambio que he enfrentado como programador en el último año. Si te interesa saber qué es un agente, dónde se consiguen, quién los vende, y sobre todo por qué puede que te “asciendan” al rol de PM más pronto de lo que crees, este artículo es para ti.
