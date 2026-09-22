@@ -6,7 +6,10 @@ prof
 tsconfig.tsbuildinfo
 .obsidian
 .quartz-cache
-.wrangler
 private/
 .replit
 replit.nix
+.quartz/
+.wrangler/
+quartz/cli/tui/dist/
+.turbo/
