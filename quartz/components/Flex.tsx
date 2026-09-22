@@ -55,6 +55,5 @@ export default ((config: FlexConfig) => {
     ...config.components.map((c) => c.Component.beforeDOMLoaded),
   )
   Flex.css = concatenateResources(...config.components.map((c) => c.Component.css))
-
   return Flex
 }) satisfies QuartzComponentConstructor<FlexConfig>
