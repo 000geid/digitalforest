@@ -3,6 +3,7 @@ title: Sobre este sitio
 tags:
   - hola
 date: 2024-04-02
+published: 2024-04-02
 ---
  Acá voy a almacenar mis pensamientos e ideas y voy a intentar ser lo más organizado posible. Pero de hecho, no tengo que serlo para poder organizarme bien. ¿Por qué? porque estoy utilizando Obsidian. 
  

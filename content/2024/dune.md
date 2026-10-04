@@ -1,6 +1,7 @@
 ---
 title: Dune de Denis Villeneuve
 date: 2024-05-05
+published: 2024-05-05
 tags:
   - scifi
 

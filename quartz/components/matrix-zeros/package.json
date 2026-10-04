@@ -1,0 +1,22 @@
+{
+  "name": "matrix-zeros",
+  "version": "1.0.0",
+  "type": "module",
+  "exports": {
+    ".": "./index.js",
+    "./components": "./components.js"
+  },
+  "quartz": {
+    "name": "matrix-zeros",
+    "displayName": "Matrix Zeros",
+    "description": "Interactive 000 in the central header",
+    "version": "1.0.0",
+    "category": "component",
+    "components": {
+      "MatrixZeros": {
+        "displayName": "Matrix Zeros",
+        "defaultPosition": "header"
+      }
+    }
+  }
+}

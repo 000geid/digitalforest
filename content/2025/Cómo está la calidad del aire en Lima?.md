@@ -1,5 +1,6 @@
 ---
 date: 2025-09-04
+published: 2025-09-04
 draft: true
 ---
 

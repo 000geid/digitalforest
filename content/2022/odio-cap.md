@@ -1,6 +1,7 @@
 ---
 title: La capitalización del odio
 date: 2022-08-13
+published: 2022-08-13
 tags:
   - política
 ---

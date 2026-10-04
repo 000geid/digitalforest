@@ -1,6 +1,7 @@
 ---
 title: Bosque Digital
 date: 2024-04-21
+published: 2024-04-21
 ---
 # Hola !!! :~)
 Soy Diego Alvarado, ingeniero y arquitecto de software. Durante el día me verás implementando y diagramando casos de uso, debuggeando features, y pensando en las mejores decisiones y patrones de diseño. Durante la noche me verás [produciendo música](https://open.spotify.com/artist/2QS5TAkzODT4vzmqfo67Xf), trajando en [Filo](https://filoapp.ogeid.xyz/), o jugando con Pancho, mi conejo 🐰

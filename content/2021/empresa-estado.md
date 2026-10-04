@@ -4,6 +4,7 @@ tags:
   - política
   - perú
 date: 2021-03-15
+published: 2021-03-15
 ---
 # El gobierno como empresa
 

@@ -1,6 +1,7 @@
 ---
 title: Pensamientos sobre El Mundo de Sofía
 date: 2024-04-22
+published: 2024-04-22
 draft: "false"
 ---
 
@@ -17,4 +18,3 @@ Como **introducción a la filosofía**, por otro lado, creo que es increíble. L
 ## El contexto lo es todo
 
 Ninguna idea vive libre de contexto y de gente que la piense. Actualmente, nuestro pensamiento está orientado hacia el *machine learning* (no voy a decirle inteligencia artificial porque no lo es!) porque es la tecnología del momento. Esto dio paso al nacimiento de ideologías basadas en la "optimización" y la confianza en sistemas de ordenamiento (el mercado, la libre competencia, etc). Hace 100 años, pensábamos que íbamos a solucionar el mundo con la revolución industrial. Hace 200, probablemente haya sido la tecnología de moda. El punto es que las ideas y las modas del momento están muy relacionadas con su contexto y en específico a la respuesta que le da la tecnología a los problemas humanos más importantes, como por ejemplo los modos de producción o cómo podemos automatizar el trabajo para que tengamos que hacer más con menos.
-

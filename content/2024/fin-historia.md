@@ -5,6 +5,7 @@ tags:
   - fukuyama
   - política
 date: 2024-05-09
+published: 2024-05-09
 ---
 
 # Notas
@@ -21,4 +22,4 @@ Fukuyama describe el liberalismo occidental como la mejor manera de llevar a cab
 - Menciona que el liberalismo ha sido la ideología que ha prevalecido por encima de, por ejemplo, el fascismo o el comunismo, porque simplemente es la manera más eficiente de liderar una civilización. Utiliza el argumento que el fascismo no fue útil económicamente y por eso no funcionó (no fue lo suficientemente eficiente). Sin embargo, en algunos aspectos, y para determinados grupos de personas, el fascismo sí es efectivo. Por ejemplo, durante el gobierno de Pinochet se dio el "milagro chileno" y algo similar pasó en el Perú durante el gobierno de Fujimori.
 
 
-Interesantes alegaciones, pero mucho texto considerando que este libro nació de un *paper* que escribió en 1989 y que tiene 15 páginas ([te lo dejo](https://pages.ucsd.edu/~bslantchev/courses/pdf/Fukuyama%20-%20End%20of%20History.pdf) por si lo quieres leer), siento que repite la misma idea una y otra vez. 
+Interesantes alegaciones, pero mucho texto considerando que este libro nació de un *paper* que escribió en 1989 y que tiene 15 páginas ([te lo dejo](https://pages.ucsd.edu/~bslantchev/courses/pdf/Fukuyama%20-%20End%20of%20History.pdf) por si lo quieres leer), siento que repite la misma idea una y otra vez.

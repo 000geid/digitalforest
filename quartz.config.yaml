@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=./quartz/plugins/quartz-plugins.schema.json
 configuration:
-  pageTitle: 000geid
+  pageTitle: Bosque Digital
   pageTitleSuffix: ""
   enableSPA: true
   enablePopovers: true
@@ -41,10 +41,16 @@ configuration:
         highlight: rgba(143, 159, 169, 0.15)
         textHighlight: "#b3aa0288"
 plugins:
+  - source: "./quartz/components/matrix-zeros"
+    enabled: true
+    layout:
+      position: header
+      priority: 10
+      condition: index
   - source: "@quartz-community/created-modified-date"
     enabled: true
     options:
-      defaultDateType: modified
+      defaultDateType: published
       priority:
         - frontmatter
         - git
@@ -210,16 +216,15 @@ plugins:
     layout:
       position: footer
       priority: 50
-  - source: "@quartz-community/recent-notes"
+  - source: "./quartz/components/recent-notes-menu"
     enabled: true
     options:
       title: Recientes
       limit: 5
       showTags: false
     layout:
-      position: afterBody
-      priority: 10
-      condition: index
+      position: left
+      priority: 45
   - source: "@quartz-community/spacer"
     enabled: true
     options: {}

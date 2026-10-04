@@ -1,5 +1,6 @@
 ---
 date: 2025-12-31
+published: 2025-12-31
 ---
 
 # El camino de los agentes

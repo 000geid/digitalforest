@@ -1,6 +1,7 @@
 ---
 title: Los NFTs y la mercantilización de la cultura
 date: 2022-07-20
+published: 2022-07-20
 tags:
   - nft
   - tecnología

@@ -1,6 +1,7 @@
 ---
 title: Conversación
 date: 2022-06-05
+published: 2022-06-05
 tags:
   - pensamiento
 ---

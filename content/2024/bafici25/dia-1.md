@@ -1,6 +1,7 @@
 ---
 title: "BAFICI 25: Día 1"
 date: 2024-04-20
+published: 2024-04-20
 tags:
   - bafici
   - cine

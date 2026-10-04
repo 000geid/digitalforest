@@ -1,6 +1,7 @@
 ---
 title: "BAFICI 25: Día 3"
 date: 2024-04-28
+published: 2024-04-28
 tags:
   - bafici
   - henryfonda

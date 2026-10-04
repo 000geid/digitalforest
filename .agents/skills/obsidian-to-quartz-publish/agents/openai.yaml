@@ -1,0 +1,4 @@
+interface:
+  display_name: "Publish Obsidian to Quartz"
+  short_description: "Prepare Obsidian notes for Quartz publishing"
+  default_prompt: "Use $obsidian-to-quartz-publish to prepare an Obsidian note for Quartz and stop before deployment."

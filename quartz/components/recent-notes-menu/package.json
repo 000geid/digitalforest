@@ -1,0 +1,22 @@
+{
+  "name": "recent-notes-menu",
+  "version": "1.0.0",
+  "type": "module",
+  "exports": {
+    ".": "./index.js",
+    "./components": "./components.js"
+  },
+  "quartz": {
+    "name": "recent-notes-menu",
+    "displayName": "Recent Notes Menu",
+    "description": "Recent notes in the sidebar and mobile explorer",
+    "version": "1.0.0",
+    "category": "component",
+    "components": {
+      "RecentNotesMenu": {
+        "displayName": "Recent Notes Menu",
+        "defaultPosition": "left"
+      }
+    }
+  }
+}

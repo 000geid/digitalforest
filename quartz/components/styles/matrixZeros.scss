@@ -1,0 +1,61 @@
+.matrix-zeros {
+  --matrix-color: var(--secondary);
+  --matrix-background-color: color-mix(in srgb, var(--tertiary) 45%, var(--light));
+  width: min(100%, 44rem);
+  display: block;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  text-align: center;
+  user-select: none;
+
+  .matrix-zeros-grid {
+    width: 100%;
+    display: block;
+  }
+
+  .matrix-zeros-row {
+    width: 100%;
+    white-space: nowrap;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--matrix-color);
+    outline-offset: 3px;
+  }
+
+  .matrix-character {
+    display: inline-block;
+    width: calc(100% / 64);
+    color: var(--matrix-background-color);
+    font-family: var(--codeFont);
+    font-size: clamp(0.5rem, 0.9vw, 0.75rem);
+    font-weight: 400;
+    line-height: 1.1;
+    transition: transform 500ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  .matrix-character.foreground {
+    color: var(--matrix-color);
+    font-weight: 600;
+  }
+
+  .matrix-character.empty {
+    visibility: hidden;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .matrix-zeros .matrix-character {
+    transition: none;
+  }
+}
+
+.page-header > header:has(.matrix-zeros) {
+  margin: 0 0 1.5rem;
+}
+
+.page-header > header:empty {
+  display: none;
+}
