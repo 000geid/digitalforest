@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Bosque Digital">
+  <title>Bosque Digital</title>
+  <rect width="512" height="512" rx="112" fill="#284b63" />
+  <!--
+    Three blocky bitmap zeros (matching the header MatrixZeros glyph),
+    arranged two on top and one centered below.
+    Glyph grid: 12 wide x 13 tall units. Layout: 27 x 29 units. Unit = 12px.
+  -->
+  <g transform="translate(94 82) scale(12)" fill="#faf8f8">
+    <g>
+      <rect x="2" y="0" width="8" height="2" />
+      <rect x="2" y="11" width="8" height="2" />
+      <rect x="0" y="2" width="2" height="9" />
+      <rect x="10" y="2" width="2" height="9" />
+    </g>
+    <g transform="translate(15 0)">
+      <rect x="2" y="0" width="8" height="2" />
+      <rect x="2" y="11" width="8" height="2" />
+      <rect x="0" y="2" width="2" height="9" />
+      <rect x="10" y="2" width="2" height="9" />
+    </g>
+    <g transform="translate(7.5 16)">
+      <rect x="2" y="0" width="8" height="2" />
+      <rect x="2" y="11" width="8" height="2" />
+      <rect x="0" y="2" width="2" height="9" />
+      <rect x="10" y="2" width="2" height="9" />
+    </g>
+  </g>
+</svg>
