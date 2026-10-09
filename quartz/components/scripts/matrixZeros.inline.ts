@@ -5,15 +5,31 @@ function setupMatrixZeros() {
   const element = document.querySelector<HTMLElement>(".matrix-zeros")
   if (!element) return
 
-  const characters = [...element.querySelectorAll<HTMLElement>(".matrix-character")]
-  const columns = Number(element.dataset.columns)
-  const rows = Number(element.dataset.rows)
+  const grids = [...element.querySelectorAll<HTMLElement>(".matrix-zeros-grid")]
   const motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)")
+  // mirrors the $mobile breakpoint in quartz/styles/variables.scss
+  const mobileMedia = window.matchMedia("(max-width: 800px)")
+  let grid: HTMLElement | undefined
+  let characters: HTMLElement[] = []
+  let columns = 0
+  let rows = 0
   let resetTimer = 0
   let activePointerId: number | null = null
 
   function reset() {
     for (const character of characters) character.style.transform = ""
+  }
+
+  // bind to the grid matching the active breakpoint (desktop vs compact mobile)
+  function bindActiveGrid() {
+    const active =
+      grids.find((candidate) => getComputedStyle(candidate).display !== "none") ?? grids[0]
+    if (!active || active === grid) return
+    reset()
+    grid = active
+    characters = [...active.querySelectorAll<HTMLElement>(".matrix-character")]
+    columns = Number(active.dataset.columns)
+    rows = Number(active.dataset.rows)
   }
 
   function disturb(x: number, y: number, strength: number) {
@@ -61,6 +77,7 @@ function setupMatrixZeros() {
     disturb(columns / 2, rows / 2, 18)
   }
 
+  bindActiveGrid()
   element.addEventListener("pointermove", onPointer)
   element.addEventListener("pointerdown", onPointer)
   element.addEventListener("pointerup", onPointerEnd)
@@ -69,6 +86,7 @@ function setupMatrixZeros() {
   element.addEventListener("click", onClick)
   element.addEventListener("keydown", onKeyDown)
   motionPreference.addEventListener("change", reset)
+  mobileMedia.addEventListener("change", bindActiveGrid)
 
   cleanup = () => {
     window.clearTimeout(resetTimer)
@@ -79,6 +97,7 @@ function setupMatrixZeros() {
     element.removeEventListener("lostpointercapture", onPointerEnd)
     element.removeEventListener("click", onClick)
     element.removeEventListener("keydown", onKeyDown)
+    mobileMedia.removeEventListener("change", bindActiveGrid)
     motionPreference.removeEventListener("change", reset)
     reset()
   }

@@ -5,14 +5,20 @@ tags:
   - linux
   - web
   - proyectos
-draft: true
 ---
 
 Quería construir un portafolio que se explorara como una máquina virtual real. En vez de una página con secciones sobre mí, el visitante encontraría archivos, leería logs y seguiría pistas desde una terminal. La primera idea era simular un shell: un servidor interpretaría comandos como `ls`, `cat` y `grep` sobre un árbol de contenido cuidadosamente escrito.
 
 Pero había una pregunta incómoda: si la terminal debía sentirse real, ¿por qué no arrancar Linux de verdad en el navegador?
 
-Eso nos llevó a [v86](https://github.com/copy/v86), un emulador de x86 que permite iniciar un kernel dentro de una página web. La prueba de concepto terminó arrancando un kernel Linux 6.8.12 compilado para i386, con una consola funcional y un sistema de archivos raíz servido por HTTP. No hay imagen de disco. La parte interesante no fue conseguir un prompt, sino lograr que el navegador, Linux y el servidor compartieran una misma idea de qué archivos existen y cuándo se leen.
+Eso nos llevó a [v86](https://github.com/copy/v86), un emulador de x86 que permite iniciar un kernel dentro de una página web.
+
+<figure>
+  <img src="/2026/v86-os-list.webp" alt="Página de v86 con la lista de sistemas arrancables en el navegador" />
+  <figcaption>El catálogo de sistemas de copy.sh/v86. De ahí salió el kernel de Buildroot con el que hicimos la primera prueba de 9p.</figcaption>
+</figure>
+
+La prueba de concepto terminó arrancando un kernel Linux 6.8.12 compilado para i386, con una consola funcional y un sistema de archivos raíz servido por HTTP. No hay imagen de disco. La parte interesante no fue conseguir un prompt, sino lograr que el navegador, Linux y el servidor compartieran una misma idea de qué archivos existen y cuándo se leen.
 
 ## El problema detrás de un shell real
 
@@ -133,7 +139,12 @@ Reemplazamos el `<pre>` por xterm.js. La entrada del usuario viaja al puerto ser
 
 Al abrir `?clean=1`, la página inicia nuestro kernel y presenta un prompt `root@diego-box:/home/diego#`. `uname -a` muestra un Linux real. `vi` funciona. Un archivo creado desde JavaScript aparece en la máquina. Las lecturas iniciales de archivos generan peticiones HTTP observables. Las escrituras hechas desde Linux, como el historial del shell, quedan en el sistema de archivos 9p de esa sesión en memoria.
 
-Eso alcanza para demostrar la arquitectura, pero todavía no es una VPS persistente por visitante. El prototipo se sirve con `python3 -m http.server`; no hay servidor Go, motor de descubrimientos, sesiones duraderas ni guardado y restauración de la máquina. Tampoco hay una barrera de acceso a los nombres de archivo del índice estático.
+<figure>
+  <img src="/2026/diego-box-terminal.webp" alt="diego-box corriendo en el navegador, con el prompt root@diego-box explorando el árbol del portafolio" />
+  <figcaption>diego-box corriendo en el navegador: un Linux real explorando el árbol del portafolio desde la terminal.</figcaption>
+</figure>
+
+Eso alcanza para demostrar la arquitectura, pero todavía no es una VPS persistente por visitante. El prototipo se sirve con `python3 -m http.server`; no hay servidor, motor de descubrimientos, sesiones duraderas ni guardado y restauración de la máquina. Tampoco hay una barrera de acceso a los nombres de archivo del índice estático.
 
 El próximo paso sería convertir esas primeras descargas en eventos de juego confiables y servir un árbol por sesión. Quizá baste con generar índices y archivos por visitante; si necesitamos un sistema de archivos vivo con escrituras controladas desde el servidor, v86 también permite usar un proxy 9p por WebSocket. Esa elección depende de las mecánicas que terminemos construyendo.
 
