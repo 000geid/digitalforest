@@ -9,9 +9,12 @@
   "quartz": {
     "name": "recent-notes-menu",
     "displayName": "Recent Notes Menu",
-    "description": "Recent notes in the sidebar and mobile explorer",
+    "description": "Blog entries on the homepage, archive, sidebar and mobile explorer",
     "version": "1.0.0",
-    "category": "component",
+    "category": [
+      "component",
+      "pageType"
+    ],
     "components": {
       "RecentNotesMenu": {
         "displayName": "Recent Notes Menu",

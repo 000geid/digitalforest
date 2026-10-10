@@ -2,18 +2,25 @@
 
 // put your custom CSS here!
 @use "../components/styles/matrixZeros.scss";
+@use "../components/styles/mobileNavigation.scss";
 
-@media all and (max-width: 800px) {
-  .sidebar.left > .recent-notes {
-    display: none;
+.blog-entries > .recent-ul > .recent-li {
+  margin: 1.25rem 0;
+
+  & .section > .desc > h3 {
+    margin: 0;
+    font-size: 1.05rem;
+    line-height: 1.5;
+
+    & > a {
+      display: block;
+      overflow-wrap: anywhere;
+    }
   }
 
-  .explorer .explorer-content {
-    overflow-y: auto;
-  }
-
-  .explorer-content > .recent-notes {
-    padding: 0 1rem 1rem;
+  & .section > .meta {
+    margin: 0.25rem 0 0;
+    font-size: 0.9rem;
   }
 }
 

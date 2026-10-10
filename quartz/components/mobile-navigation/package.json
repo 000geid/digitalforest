@@ -1,0 +1,22 @@
+{
+  "name": "mobile-navigation",
+  "version": "1.0.0",
+  "type": "module",
+  "exports": {
+    ".": "./index.js",
+    "./components": "./components.js"
+  },
+  "quartz": {
+    "name": "mobile-navigation",
+    "displayName": "Mobile Navigation",
+    "description": "Mobile side drawer with blog navigation and archive links",
+    "version": "1.0.0",
+    "category": "component",
+    "components": {
+      "MobileNavigation": {
+        "displayName": "Mobile Navigation",
+        "defaultPosition": "left"
+      }
+    }
+  }
+}

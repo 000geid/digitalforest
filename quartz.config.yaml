@@ -141,6 +141,11 @@ plugins:
     layout:
       position: left
       priority: 50
+  - source: "./quartz/components/mobile-navigation"
+    enabled: true
+    layout:
+      position: left
+      priority: 5
   - source: "@quartz-community/graph"
     enabled: true
     layout:
@@ -225,6 +230,7 @@ plugins:
     layout:
       position: left
       priority: 45
+      condition: not-index
   - source: "@quartz-community/spacer"
     enabled: true
     options: {}
