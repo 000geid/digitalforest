@@ -1,6 +1,8 @@
 ---
 date: 2025-12-31
 published: 2025-12-31
+tags:
+  - tecnología
 ---
 
 # El camino de los agentes

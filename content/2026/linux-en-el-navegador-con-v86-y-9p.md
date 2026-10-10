@@ -5,6 +5,7 @@ tags:
   - linux
   - web
   - proyectos
+  - tecnología
 ---
 
 Quería construir un portafolio que se explorara como una máquina virtual real. En vez de una página con secciones sobre mí, el visitante encontraría archivos, leería logs y seguiría pistas desde una terminal. La primera idea era simular un shell: un servidor interpretaría comandos como `ls`, `cat` y `grep` sobre un árbol de contenido cuidadosamente escrito.

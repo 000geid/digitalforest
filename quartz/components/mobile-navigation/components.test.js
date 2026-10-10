@@ -37,9 +37,12 @@ test("drawer links resolve from nested articles and years exclude unlisted and e
       "../..",
       "../../archivo",
       "../../random/about-obsidian",
-      "../../#tecnología-y-proyectos",
-      "../../#música-y-cine",
-      "../../#libros-política-y-otras-ideas",
+      "../../tags/tecnología",
+      "../../tags/música",
+      "../../tags/cine",
+      "../../tags/libros",
+      "../../tags/política",
+      "../../tags/ideas",
       "../../2026/",
       "../../2024/",
       "../../2021/",
@@ -52,6 +55,12 @@ test("drawer identifies the active page", () => {
     ["index", "."],
     ["archivo", "./archivo"],
     ["2026/index", "../2026/"],
+    ["tags/tecnología", "../tags/tecnología"],
+    ["tags/música", "../tags/música"],
+    ["tags/cine", "../tags/cine"],
+    ["tags/libros", "../tags/libros"],
+    ["tags/política", "../tags/política"],
+    ["tags/ideas", "../tags/ideas"],
   ]) {
     const tree = fromHtml(
       render(

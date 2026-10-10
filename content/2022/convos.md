@@ -4,6 +4,7 @@ date: 2022-06-05
 published: 2022-06-05
 tags:
   - pensamiento
+  - ideas
 ---
 En ocasiones, siento que el lenguaje que usamos para hablar está muy lejos de nuestro entorno inmediato. Hablamos de movimientos culturales y coaliciones políticas que no tienen nada que ver con nuestra necesidad por comer algo o sentirse protegido.
 

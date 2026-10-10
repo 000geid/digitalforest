@@ -103,9 +103,12 @@ const MobileNavigationComponent = ({ fileData, allFiles, cfg }) => {
         h(
           "nav",
           { "aria-labelledby": "mobile-drawer-topics", class: "mobile-drawer-links" },
-          link("#tecnología-y-proyectos", "Tecnología y proyectos"),
-          link("#música-y-cine", "Música y cine"),
-          link("#libros-política-y-otras-ideas", "Libros, política y otras ideas"),
+          link("tags/tecnología", "Tecnología"),
+          link("tags/música", "Música"),
+          link("tags/cine", "Cine"),
+          link("tags/libros", "Libros"),
+          link("tags/política", "Política"),
+          link("tags/ideas", "Ideas"),
         ),
         h(
           "details",

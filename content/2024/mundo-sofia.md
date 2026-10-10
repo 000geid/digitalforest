@@ -3,6 +3,8 @@ title: Pensamientos sobre El Mundo de Sofía
 date: 2024-04-22
 published: 2024-04-22
 draft: "false"
+tags:
+  - libros
 ---
 
 **Pueden haber spoilers! Proceda bajo riesgo propio**
