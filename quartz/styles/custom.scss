@@ -4,6 +4,23 @@
 @use "../components/styles/matrixZeros.scss";
 @use "../components/styles/mobileNavigation.scss";
 
+.page-header .tags {
+  font-size: 0.9rem;
+
+  & > li > a.tag-link {
+    display: inline-block;
+    margin: 0;
+    padding: 0.1rem 0.4rem;
+    border-radius: 3px;
+    font-size: 0.85em;
+
+    &:hover {
+      background: var(--secondary);
+      color: var(--light);
+    }
+  }
+}
+
 @media all and ($mobile) {
   .page > #quartz-body > .sidebar.left {
     flex-wrap: wrap;

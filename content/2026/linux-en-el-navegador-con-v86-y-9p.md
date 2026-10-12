@@ -8,24 +8,24 @@ tags:
   - tecnología
 ---
 
-Quería construir un portafolio que se explorara como una máquina virtual real. En vez de una página con secciones sobre mí, el visitante encontraría archivos, leería logs y seguiría pistas desde una terminal. La primera idea era simular un shell: un servidor interpretaría comandos como `ls`, `cat` y `grep` sobre un árbol de contenido cuidadosamente escrito.
+Quería construir un portafolio que se explorara como una máquina virtual real. En vez de una página con secciones sobre mí, el visitante encontraría archivos, leería logs y seguiría pistas desde una terminal. La primera idea fue simular un shell: un servidor interpretaría comandos como `ls`, `cat` y `grep` sobre un árbol de contenido cuidadosamente escrito. Claramente esto requeriría manejas TODAS las excepciones y casos límite. 🥱
 
-Pero había una pregunta incómoda: si la terminal debía sentirse real, ¿por qué no arrancar Linux de verdad en el navegador?
+Pero había una pregunta pendiente: si la terminal debía sentirse real, ¿por qué no usar Linux en el navegador?
 
-Eso nos llevó a [v86](https://github.com/copy/v86), un emulador de x86 que permite iniciar un kernel dentro de una página web.
+Eso nos llevó a [v86](https://github.com/copy/v86), un emulador de x86 que permite iniciar un kernel Linux dentro de la web.
 
 <figure>
   <img src="/2026/v86-os-list.webp" alt="Página de v86 con la lista de sistemas arrancables en el navegador" />
   <figcaption>El catálogo de sistemas de copy.sh/v86. De ahí salió el kernel de Buildroot con el que hicimos la primera prueba de 9p.</figcaption>
 </figure>
 
-La prueba de concepto terminó arrancando un kernel Linux 6.8.12 compilado para i386, con una consola funcional y un sistema de archivos raíz servido por HTTP. No hay imagen de disco. La parte interesante no fue conseguir un prompt, sino lograr que el navegador, Linux y el servidor compartieran una misma idea de qué archivos existen y cuándo se leen.
+La prueba de concepto terminó arrancando un kernel Linux 6.8.12 compilado para i386, con una consola funcional y un sistema de archivos raíz servido por HTTP. No hay imagen de disco. La parte interesante fue lograr que el navegador, Linux y el servidor compartieran una misma idea de qué archivos existen y cuándo se leen.
 
 ## El problema detrás de un shell real
 
-Un shell simulado da control total. El servidor conoce cada comando y puede actualizar una lista de descubrimientos cuando alguien lee cierto archivo. Con una máquina Linux real, el servidor solo entrega los archivos iniciales y deja de ver lo que sucede dentro del emulador. Podríamos empacar el contenido en una imagen de disco, pero entonces cualquier visitante podría descargarla e inspeccionarla completa, y cada cambio de contenido exigiría reconstruirla.
+La primera idea, de un shell simuladon,nos da control total. El servidor conoce cada comando y puede actualizar una lista de descubrimientos cuando alguien lee cierto archivo. Con una máquina Linux real, por otro lado, el servidor solo entrega los archivos iniciales y deja de ver lo que sucede dentro del emulador. Podríamos empacar el contenido en una imagen de disco, pero entonces cualquier visitante podría descargarla e inspeccionarla completa, y cada cambio de contenido exigiría reconstruirla...
 
-Necesitábamos que Linux ejecutara comandos reales y que el contenido siguiera viviendo fuera de la máquina. La solución fue **9p**, un protocolo de sistema de archivos que v86 presenta mediante un dispositivo virtio. Desde Linux, parece un sistema de archivos montado. Desde la página, cada archivo parte de un índice y sus bytes se descargan del servidor cuando hacen falta.
+Necesitábamos que Linux ejecutara comandos reales y que el contenido siguiera viviendo fuera de la máquina. Investigando, encontré **9p**, un protocolo de sistema de archivos que v86 presenta mediante un dispositivo virtio. Desde Linux, parece un sistema de archivos montado. Desde la página, cada archivo parte de un índice y sus bytes se descargan del servidor cuando hacen falta.
 
 ```mermaid
 flowchart LR
@@ -39,7 +39,7 @@ flowchart LR
 ```
 
 > [!important] Qué puede observar el servidor
-> En este prototipo, v86 descarga `fs.json` al iniciar y solicita cada archivo de contenido la primera vez que lo necesita. Después puede servirlo desde su caché en memoria. El log HTTP permite observar esas **primeras descargas**, no cada llamada a `read()` que hace Linux. Además, las peticiones usan nombres basados en hashes; un servidor que quiera traducirlas a rutas o descubrimientos necesita conservar esa correspondencia.
+> En este prototipo, v86 descarga `fs.json` al iniciar y solicita cada archivo de contenido la primera vez que lo necesita. Después puede servirlo desde su caché en memoria. El log HTTP permite observar esas **primeras descargas**, no cada llamada a `read()` que hace Linux.
 
 ## Primero, probar 9p sin tocar el kernel
 
@@ -75,7 +75,7 @@ const emulator = new V86({
 })
 ```
 
-v86 hace de intermediario: presenta el dispositivo 9p a Linux y resuelve sus archivos con el índice y las respuestas HTTP. El servidor web no necesita entender el protocolo 9p en este modo.
+v86 hace de intermediario: presenta el dispositivo 9p a Linux y resuelve sus archivos con el índice y las respuestas HTTP. El servidor web no necesita entender el protocolo 9p.
 
 ```mermaid
 sequenceDiagram
@@ -149,4 +149,4 @@ Eso alcanza para demostrar la arquitectura, pero todavía no es una VPS persiste
 
 El próximo paso sería convertir esas primeras descargas en eventos de juego confiables y servir un árbol por sesión. Quizá baste con generar índices y archivos por visitante; si necesitamos un sistema de archivos vivo con escrituras controladas desde el servidor, v86 también permite usar un proxy 9p por WebSocket. Esa elección depende de las mecánicas que terminemos construyendo.
 
-Por ahora, la prueba deja una idea concreta: se puede arrancar Linux en el navegador sin empaquetar el contenido en una imagen de disco. El kernel corre del lado del visitante, mientras que los archivos siguen siendo material editable del proyecto. Esa separación hace posible que el portafolio se sienta como una máquina y que escribir una nueva pista siga siendo tan simple como editar un archivo.
+Por ahora, la prueba deja una idea concreta: se puede arrancar Linux en el navegador sin empaquetar el contenido en una imagen de disco. El kernel corre del lado del visitante, mientras que los archivos siguen siendo material editable del proyecto. Esa separación hace posible que el portafolio se sienta como una máquina y que escribir una nueva pista siga siendo tan simple como editar un archivo. Gracias v86, y WASM por tanto 

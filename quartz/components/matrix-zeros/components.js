@@ -25,10 +25,10 @@ const glyph = [
 const columns = 64
 const glyphStartX = 11
 
-// Desktop keeps the original proportions; mobile uses a compact grid so the
-// band stays short on narrow screens. CSS toggles visibility by breakpoint.
+// Keep a compact band on both desktop and mobile, with one row around the glyphs.
+// CSS toggles visibility by breakpoint.
 const variants = {
-  desktop: { rows: 19, glyphStartY: 3 },
+  desktop: { rows: 15, glyphStartY: 1 },
   mobile: { rows: 15, glyphStartY: 1 },
 }
 

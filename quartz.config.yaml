@@ -16,8 +16,8 @@ configuration:
     fontOrigin: googleFonts
     cdnCaching: true
     typography:
-      header: Schibsted Grotesk
-      body: Rubik
+      header: Fraunces
+      body: DM Sans
       code: IBM Plex Mono
     colors:
       lightMode:
@@ -106,6 +106,10 @@ plugins:
     order: 92
   - source: "@quartz-community/quartz-fonts"
     enabled: true
+    options:
+      fontOrigin: local
+      header: Fraunces
+      body: DM Sans
   - source: "@quartz-themes/core"
     enabled: false
     options:
@@ -177,10 +181,11 @@ plugins:
       priority: 20
       condition: not-index
   - source: "@quartz-community/tag-list"
-    enabled: false
+    enabled: true
     layout:
       position: beforeBody
       priority: 30
+      condition: not-index
   - source: "@quartz-community/page-title"
     enabled: true
     layout:
@@ -252,7 +257,7 @@ plugins:
         - tags
         - aliases
       excludedProperties: []
-      hidePropertiesView: false
+      hidePropertiesView: true
       delimiters: ---
       language: yaml
     order: 5
