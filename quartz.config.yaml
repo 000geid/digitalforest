@@ -16,8 +16,8 @@ configuration:
     fontOrigin: googleFonts
     cdnCaching: true
     typography:
-      header: Fraunces
-      body: DM Sans
+      header: DM Sans
+      body: Source Serif 4
       code: IBM Plex Mono
     colors:
       lightMode:
@@ -108,8 +108,8 @@ plugins:
     enabled: true
     options:
       fontOrigin: local
-      header: Fraunces
-      body: DM Sans
+      header: DM Sans
+      body: Source Serif 4
   - source: "@quartz-themes/core"
     enabled: false
     options:

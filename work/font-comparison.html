@@ -1,6 +1,6 @@
 <link
   rel="stylesheet"
-  href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,600;1,400&amp;family=Fraunces:wght@400;700&amp;family=IBM+Plex+Mono:wght@400;600&amp;family=Manrope:wght@400;700&amp;family=Newsreader:ital,wght@0,400;0,600;0,700;1,400&amp;family=Rubik:ital,wght@0,400;0,600;1,400&amp;family=Schibsted+Grotesk:wght@400;700&amp;family=Source+Serif+4:ital,wght@0,400;0,600;1,400&amp;display=swap"
+  href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,600;0,700;1,400&amp;family=Fraunces:wght@400;700&amp;family=IBM+Plex+Mono:wght@400;600&amp;family=Manrope:wght@400;700&amp;family=Newsreader:ital,wght@0,400;0,600;0,700;1,400&amp;family=Source+Serif+4:ital,wght@0,400;0,600;1,400&amp;display=swap"
 />
 <style>
   #forest-fonts .font-label {
@@ -12,12 +12,13 @@
     --forest-heading: light-dark(#2b2b2b, #ebebec);
     --forest-link: light-dark(#284b63, #7b97aa);
     --forest-line: light-dark(#e5e5e5, #393639);
-    --forest-header: "Schibsted Grotesk", sans-serif;
-    --forest-body: "Rubik", sans-serif;
+    --forest-header: "Fraunces", serif;
+    --forest-body: "DM Sans", sans-serif;
     box-sizing: border-box;
     background: var(--forest-bg);
     color: var(--forest-text);
     display: grid;
+    align-content: start;
     grid-template-columns: 180px minmax(0, 1fr);
     gap: 36px;
     padding: 32px;
@@ -29,6 +30,7 @@
   }
   #forest-fonts .forest-page * {
     box-sizing: border-box;
+    font-family: inherit;
   }
   #forest-fonts .forest-page h1,
   #forest-fonts .forest-page h2,
@@ -88,7 +90,7 @@
     margin: 0.25rem 0 1.25rem;
   }
   #forest-fonts .forest-page blockquote {
-    border-left: 3px solid var(--forest-line);
+    border-left: 1px solid var(--forest-line);
     padding-left: 16px;
     margin: 24px 0;
   }
@@ -137,12 +139,17 @@
   }
 </style>
 <div id="forest-fonts">
-  <div class="viz-carousel" aria-label="Bosque Digital font alternatives">
-    <section data-variant="Current · Schibsted + Rubik">
+  <div
+    class="viz-carousel"
+    aria-label="Opciones tipográficas para Bosque Digital"
+    data-previous-label="Anterior"
+    data-next-label="Siguiente"
+  >
+    <section data-variant="Actual · Fraunces + DM Sans">
       <p class="font-label text-small">
-        Current · Schibsted Grotesk headings / Rubik body / IBM Plex Mono code
+        Títulos: Fraunces · Texto: DM Sans · Código: IBM Plex Mono
       </p>
-      <div class="forest-page" aria-label="Font preview">
+      <div class="forest-page" aria-label="Vista previa de la tipografía">
         <aside>
           <div class="forest-brand">Bosque Digital</div>
           <nav aria-label="Explorar el bosque">
@@ -216,21 +223,19 @@ console=ttyS0</code></pre>
         </article>
       </div>
     </section>
-    <section data-variant="Clean · Manrope + DM Sans" hidden></section>
-    <section data-variant="Literary · DM Sans + Source Serif 4" hidden></section>
-    <section data-variant="Warm · Fraunces + DM Sans" hidden></section>
-    <section data-variant="Journal · Newsreader" hidden></section>
+    <section data-variant="Limpia · Manrope + DM Sans" hidden></section>
+    <section data-variant="Literaria · DM Sans + Source Serif 4" hidden></section>
+    <section data-variant="Periódico · Newsreader" hidden></section>
   </div>
-  <p class="text-small text-muted" data-font-status aria-live="polite">Loading preview fonts…</p>
+  <p class="text-small text-muted" data-font-status aria-live="polite">Cargando fuentes…</p>
 </div>
 <script>
   ;(() => {
     const root = document.getElementById("forest-fonts")
     const variants = [
-      { header: "Schibsted Grotesk", body: "Rubik", fallback: "sans-serif" },
+      { header: "Fraunces", body: "DM Sans", fallback: "sans-serif" },
       { header: "Manrope", body: "DM Sans", fallback: "sans-serif" },
       { header: "DM Sans", body: "Source Serif 4", fallback: "serif" },
-      { header: "Fraunces", body: "DM Sans", fallback: "sans-serif" },
       { header: "Newsreader", body: "Newsreader", fallback: "serif" },
     ]
     const sections = [...root.querySelectorAll("[data-variant]")]
@@ -240,7 +245,7 @@ console=ttyS0</code></pre>
       if (index > 0) {
         const label = document.createElement("p")
         label.className = "font-label text-small"
-        label.textContent = `${variant.header} headings / ${variant.body} body / IBM Plex Mono code`
+        label.textContent = `Títulos: ${variant.header} · Texto: ${variant.body} · Código: IBM Plex Mono`
         section.append(label, template.cloneNode(true))
       }
       const page = section.querySelector(".forest-page")
@@ -250,7 +255,11 @@ console=ttyS0</code></pre>
       )
       page.style.setProperty("--forest-body", `"${variant.body}", ${variant.fallback}`)
     })
-    const settings = { page: "Home", size: 16 }
+    const saved = window.openai?.widgetState?.modelContent
+    const settings = {
+      page: saved?.page === "Article" ? "Article" : "Home",
+      size: Number.isFinite(saved?.size) ? Math.min(20, Math.max(16, saved.size)) : 16,
+    }
     function render() {
       root.querySelectorAll(".forest-page").forEach((page) => {
         page.style.fontSize = `${settings.size}px`
@@ -262,10 +271,36 @@ console=ttyS0</code></pre>
     }
     render()
     if (globalThis.Tweak) {
-      const controls = new Tweak({ container: root, onChange: render })
-      controls.addSelect(settings, "page", { label: "Preview page", options: ["Home", "Article"] })
-      controls.addSlider(settings, "size", { label: "Body size", min: 16, max: 20, unit: "px" })
+      const controls = new Tweak({
+        container: root,
+        onChange: () => {
+          render()
+          window.openai?.setWidgetState({ modelContent: { ...settings } }).catch(() => {})
+        },
+      })
+      controls.addSelect(settings, "page", {
+        label: "Página",
+        options: [
+          { label: "Inicio", value: "Home" },
+          { label: "Artículo", value: "Article" },
+        ],
+      })
+      controls.addSlider(settings, "size", {
+        label: "Tamaño del texto",
+        min: 16,
+        max: 20,
+        unit: "px",
+      })
     }
+    window.addEventListener("openai:set_globals", (event) => {
+      const restored = event.detail?.globals?.widgetState?.modelContent
+      if (!restored) return
+      settings.page = restored.page === "Article" ? "Article" : "Home"
+      settings.size = Number.isFinite(restored.size)
+        ? Math.min(20, Math.max(16, restored.size))
+        : 16
+      render()
+    })
     const families = [
       ...new Set(variants.flatMap((v) => [v.header, v.body]).concat("IBM Plex Mono")),
     ]
@@ -273,12 +308,12 @@ console=ttyS0</code></pre>
       .then((results) => {
         const missing = families.filter((_, index) => results[index].length === 0)
         root.querySelector("[data-font-status]").textContent = missing.length
-          ? `Unavailable: ${missing.join(", ")} · fallback fonts shown`
-          : "All preview fonts loaded · code font stays IBM Plex Mono"
+          ? `Sin cargar: ${missing.join(", ")} · se muestran fuentes de respaldo`
+          : "Fuentes cargadas · código en IBM Plex Mono en todas las opciones"
       })
       .catch(() => {
         root.querySelector("[data-font-status]").textContent =
-          "Font download failed · fallback fonts may be shown"
+          "No se pudieron descargar las fuentes · se muestran fuentes de respaldo"
       })
   })()
 </script>
