@@ -1,6 +1,6 @@
 <link
   rel="stylesheet"
-  href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,600;0,700;1,400&amp;family=Fraunces:wght@400;700&amp;family=IBM+Plex+Mono:wght@400;600&amp;family=Manrope:wght@400;700&amp;family=Newsreader:ital,wght@0,400;0,600;0,700;1,400&amp;family=Source+Serif+4:ital,wght@0,400;0,600;1,400&amp;display=swap"
+  href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,600;0,700;1,400&amp;family=IBM+Plex+Mono:wght@400;600&amp;family=Manrope:wght@400;600;700&amp;family=Rubik:ital,wght@0,400;0,600;1,400&amp;family=Schibsted+Grotesk:wght@400;600;700&amp;display=swap"
 />
 <style>
   #forest-fonts .font-label {
@@ -12,7 +12,7 @@
     --forest-heading: light-dark(#2b2b2b, #ebebec);
     --forest-link: light-dark(#284b63, #7b97aa);
     --forest-line: light-dark(#e5e5e5, #393639);
-    --forest-header: "Fraunces", serif;
+    --forest-header: "DM Sans", sans-serif;
     --forest-body: "DM Sans", sans-serif;
     box-sizing: border-box;
     background: var(--forest-bg);
@@ -141,14 +141,12 @@
 <div id="forest-fonts">
   <div
     class="viz-carousel"
-    aria-label="Opciones tipográficas para Bosque Digital"
+    aria-label="Opciones sin serif para Bosque Digital"
     data-previous-label="Anterior"
     data-next-label="Siguiente"
   >
-    <section data-variant="Actual · Fraunces + DM Sans">
-      <p class="font-label text-small">
-        Títulos: Fraunces · Texto: DM Sans · Código: IBM Plex Mono
-      </p>
+    <section data-variant="DM Sans · uniforme">
+      <p class="font-label text-small">Títulos y texto: DM Sans · Código: IBM Plex Mono</p>
       <div class="forest-page" aria-label="Vista previa de la tipografía">
         <aside>
           <div class="forest-brand">Bosque Digital</div>
@@ -160,7 +158,7 @@
           </nav>
         </aside>
         <article lang="es">
-          <div data-page="Home">
+          <div data-page="Home" hidden>
             <h1>Hola !!! :~)</h1>
             <p>
               Soy Diego Alvarado, ingeniero y arquitecto de software. Acá escribo sobre lo que
@@ -196,7 +194,7 @@
               </li>
             </ul>
           </div>
-          <div data-page="Article" hidden>
+          <div data-page="Article">
             <h1>Una máquina Linux en el navegador, con el servidor como disco</h1>
             <p class="forest-meta">4 de octubre de 2026 · linux, web, proyectos, tecnología</p>
             <p>
@@ -223,9 +221,8 @@ console=ttyS0</code></pre>
         </article>
       </div>
     </section>
-    <section data-variant="Limpia · Manrope + DM Sans" hidden></section>
-    <section data-variant="Literaria · DM Sans + Source Serif 4" hidden></section>
-    <section data-variant="Periódico · Newsreader" hidden></section>
+    <section data-variant="Manrope · geométrica" hidden></section>
+    <section data-variant="Schibsted + Rubik · redondeada" hidden></section>
   </div>
   <p class="text-small text-muted" data-font-status aria-live="polite">Cargando fuentes…</p>
 </div>
@@ -233,10 +230,9 @@ console=ttyS0</code></pre>
   ;(() => {
     const root = document.getElementById("forest-fonts")
     const variants = [
-      { header: "Fraunces", body: "DM Sans", fallback: "sans-serif" },
-      { header: "Manrope", body: "DM Sans", fallback: "sans-serif" },
-      { header: "DM Sans", body: "Source Serif 4", fallback: "serif" },
-      { header: "Newsreader", body: "Newsreader", fallback: "serif" },
+      { header: "DM Sans", body: "DM Sans" },
+      { header: "Manrope", body: "Manrope" },
+      { header: "Schibsted Grotesk", body: "Rubik" },
     ]
     const sections = [...root.querySelectorAll("[data-variant]")]
     const template = sections[0].querySelector(".forest-page")
@@ -249,15 +245,12 @@ console=ttyS0</code></pre>
         section.append(label, template.cloneNode(true))
       }
       const page = section.querySelector(".forest-page")
-      page.style.setProperty(
-        "--forest-header",
-        `"${variant.header}", ${variant.header === "Fraunces" || variant.header === "Newsreader" ? "serif" : "sans-serif"}`,
-      )
-      page.style.setProperty("--forest-body", `"${variant.body}", ${variant.fallback}`)
+      page.style.setProperty("--forest-header", `"${variant.header}", sans-serif`)
+      page.style.setProperty("--forest-body", `"${variant.body}", sans-serif`)
     })
     const saved = window.openai?.widgetState?.modelContent
     const settings = {
-      page: saved?.page === "Article" ? "Article" : "Home",
+      page: saved?.page === "Home" ? "Home" : "Article",
       size: Number.isFinite(saved?.size) ? Math.min(20, Math.max(16, saved.size)) : 16,
     }
     function render() {
@@ -295,7 +288,7 @@ console=ttyS0</code></pre>
     window.addEventListener("openai:set_globals", (event) => {
       const restored = event.detail?.globals?.widgetState?.modelContent
       if (!restored) return
-      settings.page = restored.page === "Article" ? "Article" : "Home"
+      settings.page = restored.page === "Home" ? "Home" : "Article"
       settings.size = Number.isFinite(restored.size)
         ? Math.min(20, Math.max(16, restored.size))
         : 16

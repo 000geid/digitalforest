@@ -17,7 +17,7 @@ configuration:
     cdnCaching: true
     typography:
       header: DM Sans
-      body: Source Serif 4
+      body: DM Sans
       code: IBM Plex Mono
     colors:
       lightMode:
@@ -109,7 +109,7 @@ plugins:
     options:
       fontOrigin: local
       header: DM Sans
-      body: Source Serif 4
+      body: DM Sans
   - source: "@quartz-themes/core"
     enabled: false
     options:
